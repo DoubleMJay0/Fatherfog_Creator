@@ -24,7 +24,7 @@ export function plate(name, { caption = '', ratio = 'tall', label = '' } = {}) {
   const cls = ratio === 'square' ? ' plate--square' : ratio === 'wide' ? ' plate--wide' : '';
   return `<figure class="plate${cls}">
     <div class="plate__img" data-img="${esc(name)}" data-label="${esc(label || caption)}"></div>
-    ${caption ? `<figcaption>${esc(caption)}</figcaption>` : ''}
+    ${caption ? `<figcaption><span>${esc(caption)}</span></figcaption>` : ''}
   </figure>`;
 }
 

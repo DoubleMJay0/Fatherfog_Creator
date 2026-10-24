@@ -755,3 +755,9 @@ html, body { overflow-x: clip; }
 .quote--chapter cite { font-size: 12px; margin-top: 8px; }
 .quote--chapter { margin-bottom: 18px; }
 .rule-orn--quote { margin: 0 0 24px; }
+
+/* Bildunterschrift: Punkte als eigene Spalten, Text bleibt bei Umbruch mittig */
+.plate figcaption { display: flex; justify-content: center; align-items: center; gap: 10px; }
+.plate figcaption::before, .plate figcaption::after { margin: 0; flex: 0 0 auto; }
+.plate figcaption span { text-wrap: balance; margin-right: -.22em; /* letzte Sperrung ausgleichen */ }
+@media (max-width: 640px) { .plate figcaption::before, .plate figcaption::after { display: none; } }
