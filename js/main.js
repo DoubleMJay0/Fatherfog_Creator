@@ -109,7 +109,7 @@ R.prolog = () => {
       <p class="lead">${esc(c.lead)}</p>
       <div class="prose">${chapterVig('prolog')}${c.text.map((p) => `<p>${esc(p)}</p>`).join('')}</div>
       ${orn('rabe')}
-      <p class="quote">„Der Jäger brachte es nicht übers Herz, sie zu töten. Und als gerade ein junger Frischling dahergesprungen kam, stach er ihn ab, nahm Lunge und Leber heraus und brachte sie als Wahrzeichen der Königin mit.“<cite>Schneewittchen</cite></p>
+      <p class="quote">„Der Jäger brachte es nicht übers Herz, sie zu töten. Und als gerade ein junger Frischling dahergesprungen kam, stach er ihn ab, nahm Lunge und Leber heraus und brachte sie als Wahrzeichen der Königin mit. Der Koch musste sie in Salz kochen, und das boshafte Weib aß sie auf und meinte, sie hätte Schneewittchens Lunge und Leber gegessen.“<cite>Schneewittchen</cite></p>
       <div class="rule-orn"><span></span></div>
       <p class="prose" style="margin:0 0 10px">Welche Figur erschaffst du?</p>
       <div class="start choices choices--2">
