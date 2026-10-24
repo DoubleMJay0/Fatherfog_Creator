@@ -73,9 +73,8 @@ function head(c, extra = '') {
   return `<header class="chapter-head">
     ${c.num ? `<p class="kicker">Kapitel ${c.num}</p>` : ''}
     <h1 class="title">${esc(c.title)}</h1>
-    ${c.sheet ? `<span class="sheet-ref">Charakterblatt · ${esc(c.sheet)}</span>` : ''}
     </header>
-    ${c.quote ? `<p class="quote quote--chapter">${esc(c.quote[0])}<cite>${esc(c.quote[1])}</cite></p>` : ''}
+    ${c.quote ? `<p class="quote quote--chapter">${esc(c.quote[0])}<cite>${esc(c.quote[1])}</cite></p><div class="rule-orn rule-orn--quote"><span></span></div>` : ''}
     <p class="lead">${esc(c.lead)}</p>
     <div class="prose">${chapterVig(c.id)}${c.text.map((p) => `<p>${esc(p)}</p>`).join('')}${extra}</div>`;
 }
@@ -878,7 +877,7 @@ function updateNav(root) {
 }
 /* Texte & Elemente tauchen beim Scrollen aus dem Nebel auf */
 const FX_SEL = [
-  '.chapter-head', '.kicker', '.title', '.sheet-ref', '.lead', '.prose > p', '.prose > em', '.quote', '.rule-orn', '.vig', '.plate',
+  '.chapter-head', '.kicker', '.title', '.lead', '.prose > p', '.prose > em', '.quote', '.rule-orn', '.vig', '.plate',
   '.roll', '.option', '.deck', '.deck__dots', '.deck__pick', '.reveal', '.seal', '.d100', '.pair > section', '.detail > div > *', '.tally',
   '.field', '.skillhead', '.tree-wrap', '.skillinfo', '.cloaks', '.finale > *', '.actions', '.check', '.nav',
 ].join(',');

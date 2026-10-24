@@ -753,3 +753,5 @@ html, body { overflow-x: clip; }
 /* Märchenzitat unter dem Kapitelkopf */
 .quote--chapter { margin: 4px auto 26px; font-size: 17px; color: var(--ink-3); max-width: 32em; }
 .quote--chapter cite { font-size: 12px; margin-top: 8px; }
+.quote--chapter { margin-bottom: 18px; }
+.rule-orn--quote { margin: 0 0 24px; }
