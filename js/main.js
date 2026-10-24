@@ -75,6 +75,7 @@ function head(c, extra = '') {
     <h1 class="title">${esc(c.title)}</h1>
     ${c.sheet ? `<span class="sheet-ref">Charakterblatt · ${esc(c.sheet)}</span>` : ''}
     </header>
+    ${c.quote ? `<p class="quote quote--chapter">${esc(c.quote[0])}<cite>${esc(c.quote[1])}</cite></p>` : ''}
     <p class="lead">${esc(c.lead)}</p>
     <div class="prose">${chapterVig(c.id)}${c.text.map((p) => `<p>${esc(p)}</p>`).join('')}${extra}</div>`;
 }

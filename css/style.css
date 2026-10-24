@@ -749,3 +749,7 @@ html, body { overflow-x: clip; }
 @keyframes fogA { from { transform: translate3d(-6%, 0, 0) scale(1); } to { transform: translate3d(6%, -3%, 0) scale(1.08); } }
 @keyframes fogB { from { transform: translate3d(5%, 2%, 0) scale(1.05); } to { transform: translate3d(-7%, -2%, 0) scale(1); } }
 @keyframes fogC { from { transform: translate3d(0, -4%, 0) scale(1.1); } to { transform: translate3d(-5%, 3%, 0) scale(1); } }
+
+/* Märchenzitat unter dem Kapitelkopf */
+.quote--chapter { margin: 4px auto 26px; font-size: 17px; color: var(--ink-3); max-width: 32em; }
+.quote--chapter cite { font-size: 12px; margin-top: 8px; }
