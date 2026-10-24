@@ -593,6 +593,7 @@ R.skills = () => {
         <span><i class="diamond" style="border-style:dotted;opacity:.6"></i>Voraussetzung fehlt</span>
       </div>
     </div>
+    <div class="tree-frame">
     <div class="tree-wrap">
       <div class="tree">
         <div class="tree__head" style="grid-column:1;grid-row:1">Grundlagen <em>+10</em></div>
@@ -601,6 +602,9 @@ R.skills = () => {
         ${SKILLS.map(node).join('')}
         <svg class="links" aria-hidden="true"></svg>
       </div>
+    </div>
+    <span class="tree-edge tree-edge--l" aria-hidden="true"></span>
+    <span class="tree-edge tree-edge--r" aria-hidden="true"><i>wischen ›</i></span>
     </div>
     ${orn('giftpilze')}
     <div class="skillinfo" aria-live="polite"></div>
@@ -716,7 +720,7 @@ function openSheet(id) {
     if (!toggleSkill(id)) return;
     const sl = stage.querySelector('.tree-wrap')?.scrollLeft ?? 0;
     render();
-    const tw = stage.querySelector('.tree-wrap'); if (tw) tw.scrollLeft = sl;
+    const tw = stage.querySelector('.tree-wrap'); if (tw) { tw.scrollLeft = sl; tw.dispatchEvent(new Event('scroll')); }
     const nb = stage.querySelector(`[data-skill=${id}]`); nb?.classList.add('is-pulse', 'is-focus');
     openSheet(id);
     if (C.SKILL[id].spec && st.bought[id]) sh.querySelector('#spec')?.focus();
@@ -727,6 +731,16 @@ function openSheet(id) {
 
 R.skills.bind = (root) => {
   requestAnimationFrame(() => drawLinks(root));
+  // Unscharfe Ränder, solange es seitlich noch etwas zu sehen gibt
+  const wrap = root.querySelector('.tree-wrap'); const frame = root.querySelector('.tree-frame');
+  const edges = () => {
+    const max = wrap.scrollWidth - wrap.clientWidth;
+    frame.classList.toggle('can-right', max > 4 && wrap.scrollLeft < max - 4);
+    frame.classList.toggle('can-left', wrap.scrollLeft > 4);
+  };
+  wrap.addEventListener('scroll', edges, { passive: true });
+  window.addEventListener('resize', edges);
+  requestAnimationFrame(edges);
   showInfo(root, infoId);
   root.querySelectorAll('[data-skill]').forEach((b) => {
     b.addEventListener('mouseenter', () => { if (!sheetMode()) showInfo(root, b.dataset.skill); });

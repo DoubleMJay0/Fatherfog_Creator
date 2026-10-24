@@ -761,3 +761,24 @@ html, body { overflow-x: clip; }
 .plate figcaption::before, .plate figcaption::after { margin: 0; flex: 0 0 auto; }
 .plate figcaption span { text-wrap: balance; margin-right: -.22em; /* letzte Sperrung ausgleichen */ }
 @media (max-width: 640px) { .plate figcaption::before, .plate figcaption::after { display: none; } }
+
+/* Fertigkeitsbaum: unscharfer, ausblendender Rand als Hinweis zum Seitwärts-Wischen */
+.tree-frame { position: relative; }
+.tree-edge {
+  position: absolute; top: 0; bottom: 6px; width: 64px; z-index: 3; pointer-events: none;
+  opacity: 0; transition: opacity .35s;
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+}
+.tree-edge--r { right: 0; background: linear-gradient(to right, transparent, var(--paper) 85%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 55%); mask-image: linear-gradient(to right, transparent, #000 55%); }
+.tree-edge--l { left: 0; width: 40px; background: linear-gradient(to left, transparent, var(--paper) 85%);
+  -webkit-mask-image: linear-gradient(to left, transparent, #000 55%); mask-image: linear-gradient(to left, transparent, #000 55%); }
+.tree-frame.can-right .tree-edge--r, .tree-frame.can-left .tree-edge--l { opacity: 1; }
+.tree-edge i {
+  position: sticky; top: 45vh; display: block; margin: 70px 0 0 auto; width: max-content;
+  font-family: var(--serif); font-size: 13px; color: var(--ink-2); writing-mode: vertical-rl; transform: rotate(180deg);
+  animation: nudge 2.4s ease-in-out infinite;
+}
+@keyframes nudge { 0%, 100% { translate: 0 0; } 50% { translate: 4px 0; } }
+@media (hover: hover) and (min-width: 861px) { .tree-edge i { display: none; } }
+.chapter--wide { grid-template-columns: minmax(0, 1fr); } .tree-frame, .tree-wrap { max-width: 100%; min-width: 0; }
