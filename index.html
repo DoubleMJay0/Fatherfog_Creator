@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fatherfog · Charaktererschaffung</title>
+  <meta name="description" content="Erschaffe Schritt für Schritt eine Figur für das Märchen-Horror-Rollenspiel Fatherfog und lade sie als ausgefülltes Charakterblatt (PDF) herunter.">
+  <meta name="theme-color" content="#f7f8f4">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Nebel -->
+  <div class="fog" aria-hidden="true">
+    <div class="fog__layer fog__layer--1"></div>
+    <div class="fog__layer fog__layer--2"></div>
+    <div class="fog__layer fog__layer--3"></div>
+    <div class="fog__grain"></div>
+  </div>
+  <div class="veil" aria-hidden="true"></div>
+
+  <header class="top">
+    <a class="brand" href="#" data-goto="0" aria-label="Zum Anfang">
+      <span class="brand__mark">Fatherfog</span>
+      <span class="brand__sub">Charaktererschaffung</span>
+    </a>
+    <nav class="path" aria-label="Kapitel"></nav>
+    <div class="top__tools">
+      <button class="tool" id="btn-sound" type="button" aria-pressed="false" title="Klang an/aus">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span class="sr">Klang</span>
+      </button>
+      <button class="tool" id="btn-menu" type="button" title="Optionen" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="19" cy="12" r="1.8" fill="currentColor"/></svg>
+        <span class="sr">Optionen</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="stage" tabindex="-1"></main>
+
+  <aside class="ledger" id="ledger" aria-label="Deine Figur bisher"></aside>
+
+  <dialog id="menu" class="menu">
+    <form method="dialog">
+      <h2>Optionen</h2>
+      <label class="vol"><span>Musik</span><input type="range" id="opt-vol" min="0" max="100" step="1"></label>
+      <label class="switch"><input type="checkbox" id="opt-manual"> <span>Ich würfle mit echten Würfeln <small>– Ergebnisse selbst eintragen</small></span></label>
+      <div class="menu__row">
+        <button type="button" class="btn btn--ghost" id="btn-export">Figur speichern (.json)</button>
+        <label class="btn btn--ghost">Figur laden<input type="file" id="file-import" accept="application/json,.json" hidden></label>
+      </div>
+      <button type="button" class="btn btn--danger" id="btn-reset">Neue Figur beginnen</button>
+      <button class="btn" value="close">Schließen</button>
+    </form>
+  </dialog>
+
+  <noscript><p class="noscript">Dieser Charaktergenerator braucht JavaScript.</p></noscript>
+
+  <script src="assets/vendor/pdf-lib.min.js" defer></script>
+  <script src="assets/vendor/fontkit.umd.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
