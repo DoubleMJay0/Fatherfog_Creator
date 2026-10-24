@@ -62,7 +62,7 @@ const ch = () => CHAPTERS[st.chapter];
 /* Kleine Vignetten (assets/img/vignettes/*.png, freigestellt) */
 const VIG = {
   prolog: ['apfel', 'r'], stats: ['giftpilze', 'l'], saves: ['rabe', 'r'], class: ['kerze', 'l'],
-  rucksack: ['flaeschchen', 'r'], cloak: ['spindel', 'l'], keepsakes: ['spiegel', 'r'], coin: ['apfel', 'l'],
+  rucksack: ['flaeschchen', 'r'], cloak: ['spindel', 'l'], keepsakes: ['spiegel', 'r'], coin: ['beutel', 'l'],
   artifact: ['schluessel', 'r'], skills: ['flaeschchen', 'l'], finish: ['kerze', 'r'],
 };
 const vig = (name, side = 'r') => `<img class="vig vig--${side}" src="assets/img/vignettes/${name}.png" style="shape-outside:url(assets/img/vignettes/${name}.png)" alt="" aria-hidden="true" decoding="async">`;
