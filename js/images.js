@@ -2,6 +2,8 @@
 import { esc } from './util.js';
 
 const EXT = ['webp', 'png', 'jpg'];
+// Bei neuen Motiven hochzählen – zwingt Browser, die Bilder neu zu laden.
+export const ASSET_VER = '2';
 const missing = new Set();
 
 const FOG_SVG = `<svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -46,8 +48,8 @@ export function hydrateImages(root = document) {
     const img = new Image();
     img.alt = '';
     img.decoding = 'async';
-    img.onerror = () => { i++; if (i < EXT.length) img.src = `assets/img/${name}.${EXT[i]}`; else { missing.add(name); placeholder(box); } };
+    img.onerror = () => { i++; if (i < EXT.length) img.src = `assets/img/${name}.${EXT[i]}?v=${ASSET_VER}`; else { missing.add(name); placeholder(box); } };
     img.onload = () => { box.innerHTML = ''; box.append(img); };
-    img.src = `assets/img/${name}.${EXT[0]}`;
+    img.src = `assets/img/${name}.${EXT[0]}?v=${ASSET_VER}`;
   });
 }
