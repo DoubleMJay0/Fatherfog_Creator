@@ -5,7 +5,7 @@ import { BROOCHES, TRINKETS, COINS, ARTIFACTS } from './data/tables.js';
 import * as C from './character.js';
 import { esc, rand, rollExpr, sleep, store, toast, fmtMod, pad2, download, slug } from './util.js';
 import { rollInto, showDice, rollD100, showD100 } from './dice.js';
-import { plate, imgBox, hydrateImages } from './images.js';
+import { plate, imgBox, hydrateImages, ASSET_VER } from './images.js';
 import { sound, music } from './sound.js';
 
 /* ------------------------------------------------------------------ */
@@ -900,6 +900,17 @@ function reveal(root) {
   els.forEach((el) => fxObserver.observe(el));
 }
 
+/* Motive des nächsten Kapitels schon im Hintergrund laden */
+const preloaded = new Set();
+function preloadNext() {
+  const next = CHAPTERS[st.chapter + 1]; if (!next) return;
+  const names = [];
+  if (next.img) names.push(next.img);
+  if (next.id === 'class') CLASSES.forEach((k) => names.push('class-' + k.id));
+  if (next.id === 'rucksack') (C.cls(st)?.rucksacks || []).forEach((r) => names.push('rucksack-' + r));
+  names.forEach((n) => { if (preloaded.has(n)) return; preloaded.add(n); const im = new Image(); im.src = `assets/img/${n}.webp?v=${ASSET_VER}`; });
+}
+
 function render({ animate = false } = {}) {
   // Kapitel, die eine Klasse brauchen, ohne Klasse nicht betreten
   if (st.chapter >= 4 && !st.classId) st.chapter = 3;
@@ -912,6 +923,7 @@ function render({ animate = false } = {}) {
   hydrateImages(stage);
   if (animate) reveal(stage); else fxObserver?.disconnect();
   renderPath(); renderLedger();
+  preloadNext();
   document.title = `${c.title} · Fatherfog`;
 }
 let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (ch().id === 'skills') drawLinks(stage); }, 120); });

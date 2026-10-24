@@ -3,7 +3,7 @@ import { esc } from './util.js';
 
 const EXT = ['webp', 'png', 'jpg'];
 // Bei neuen Motiven hochzählen – zwingt Browser, die Bilder neu zu laden.
-export const ASSET_VER = '2';
+export const ASSET_VER = '3';
 const missing = new Set();
 
 const FOG_SVG = `<svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
