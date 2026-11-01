@@ -83,6 +83,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .top__tools { display: flex; gap: 6px; }
 .tool { width: 38px; height: 38px; border: 1px solid transparent; background: none; border-radius: 50%; cursor: pointer; display: grid; place-items: center; color: var(--ink-2); }
 .tool:hover { border-color: var(--ink-3); }
+a.tool { text-decoration: none; }
 .tool svg { width: 20px; height: 20px; }
 #btn-sound[aria-pressed="false"] .wave { opacity: .15; }
 

@@ -797,6 +797,8 @@ R.finish = () => {
       </div>
       <p style="margin-top:22px">${esc(ENDINGS[0])}</p>
       <div class="actions" style="justify-content:center"><button class="btn btn--link" data-act="another">Zweite Figur erschaffen</button></div>
+      <p class="prose" style="margin-top:26px">Vier Dörfer haben nach Hilfe gerufen.</p>
+      <div class="actions" style="justify-content:center"><a class="btn btn--ghost" href="https://doublemjay0.github.io/Fatherfog_WorldMap/" target="_blank" rel="noopener">Zur Weltkarte · Wählt euren Pfad</a></div>
     </div>
     ${nav(true)}`);
 };
